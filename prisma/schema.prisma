@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("https://ahsvcrrekhpmokwscpvt.supabase.co")
+}
+
+model Project {
+  id                   String   @id @default(cuid())
+  github_id            Int      @unique
+  name                 String
+  description_override String?
+  live_url             String?
+  github_url           String?
+  stars                Int      @default(0)
+  featured             Boolean  @default(false)
+  display_order        Int      @default(0)
+  tags                 String[]
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+}
+
+model Skill {
+  id            String   @id @default(cuid())
+  name          String
+  category      String?
+  display_order Int      @default(0)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
+model Experience {
+  id            String    @id @default(cuid())
+  company       String
+  role          String
+  start_date    DateTime
+  end_date      DateTime?
+  description   String?
+  display_order Int       @default(0)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+}
+
+model Education {
+  id         String    @id @default(cuid())
+  school     String
+  degree     String
+  field      String
+  start_date DateTime
+  end_date   DateTime?
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+}
+
+model LinkedinPost {
+  id           String    @id @default(cuid())
+  content      String
+  post_url     String
+  published_at DateTime?
+  synced_at    DateTime  @default(now())
+}
+
+model CvTemplate {
+  id        String  @id @default(cuid())
+  name      String
+  is_active Boolean @default(false)
+}
+
+model SiteConfig {
+  key   String @id
+  value String
+}
