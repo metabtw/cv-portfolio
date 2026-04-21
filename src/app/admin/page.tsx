@@ -19,7 +19,7 @@ export default function AdminDashboard() {
       })
       if (res.ok) alert('Sync successful!')
       else alert('Sync failed')
-    } catch (e) {
+    } catch {
       alert('Error syncing')
     }
     setSyncing(false)

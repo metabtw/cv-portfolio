@@ -61,7 +61,7 @@ export default function CVBuilder() {
         }
         if (skillsRes.ok) {
           const data = await skillsRes.json()
-          setSkills(data.map((s: any) => s.name))
+          setSkills(data.map((s: { name: string }) => s.name))
         }
       } catch (e) {
         console.error("Failed to fetch CV data", e)
@@ -80,7 +80,7 @@ export default function CVBuilder() {
     })
   )
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: { active: { id: string }, over: { id: string } | null }) => {
     const { active, over } = event
 
     if (over && active.id !== over.id) {
@@ -115,7 +115,8 @@ export default function CVBuilder() {
             {showPreview ? "Hide Preview" : "Show Preview"}
           </Button>
           <PDFDownloadLink document={<CVDocument data={cvData} />} fileName="portfolio_cv.pdf">
-            {({ loading }) => (
+            {/* @ts-expect-error react-pdf types are outdated */}
+            {({ loading }: { loading: boolean }) => (
               <Button disabled={loading}>
                 <Download className="w-4 h-4 mr-2" />
                 {loading ? 'Generating...' : 'Download PDF'}
@@ -151,7 +152,7 @@ export default function CVBuilder() {
         <div className={`transition-all duration-300 ${showPreview ? 'opacity-100 h-auto' : 'opacity-50 grayscale pointer-events-none'}`}>
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             Live Preview
-            {!showPreview && <span className="ml-2 text-xs font-normal text-muted-foreground bg-muted px-2 py-1 rounded">Click 'Show Preview' to interact</span>}
+            {!showPreview && <span className="ml-2 text-xs font-normal text-muted-foreground bg-muted px-2 py-1 rounded">Click &apos;Show Preview&apos; to interact</span>}
           </h2>
           <Card className="overflow-hidden border bg-white h-[600px] shadow-sm">
             {showPreview ? (

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Loader2, ArrowLeft, Plus, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -27,7 +26,7 @@ export default function AdminContent() {
         setLoading(false)
       })
       .catch(err => {
-        console.error(err)
+        console.error("Failed to load skills:", err)
         setLoading(false)
       })
   }, [])
@@ -48,7 +47,7 @@ export default function AdminContent() {
         setSkills([...skills, added])
         setNewSkill('')
       }
-    } catch (err) {
+    } catch {
       alert('Failed to add skill')
     }
   }
@@ -59,7 +58,7 @@ export default function AdminContent() {
       if (res.ok) {
         setSkills(skills.filter(s => s.id !== id))
       }
-    } catch (err) {
+    } catch {
       alert('Failed to delete skill')
     }
   }

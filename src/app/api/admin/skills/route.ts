@@ -12,7 +12,7 @@ export async function GET() {
       orderBy: { display_order: 'asc' }
     })
     return NextResponse.json(skills)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     })
     
     return NextResponse.json(newSkill)
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } catch {
+    return NextResponse.json({ error: 'Failed to create skill' }, { status: 500 })
   }
 }

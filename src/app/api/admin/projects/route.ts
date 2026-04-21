@@ -12,7 +12,7 @@ export async function GET() {
       orderBy: { created_at: 'desc' }
     })
     return NextResponse.json(projects)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

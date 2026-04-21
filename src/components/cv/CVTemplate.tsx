@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet, Font, Link } from '@react-pdf/renderer'
+import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer'
 
 // You would typically register fonts here to ensure ATS compatibility and nice looks
 // Font.register({ family: 'Inter', src: '...' })
@@ -78,7 +78,7 @@ type CVData = {
   title: string
   email: string
   github: string
-  projects: any[]
+  projects: { name: string, description_override?: string, live_url?: string }[]
   skills: string[]
 }
 
@@ -102,7 +102,7 @@ export function CVDocument({ data }: { data: CVData }) {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Skills</Text>
             <View style={styles.skills}>
-              {data.skills.map((skill, i) => (
+              {data.skills.map((skill: string, i: number) => (
                 <Text key={i} style={styles.skillBadge}>{skill}</Text>
               ))}
             </View>

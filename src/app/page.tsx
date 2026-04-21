@@ -12,7 +12,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background z-0" />
         <div className="z-10 text-center space-y-6 max-w-3xl px-4">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter">
-            Hi, I'm a <span className="text-primary">Developer</span>
+            Hi, I&apos;m a <span className="text-primary">Developer</span>
           </h1>
           <p className="text-xl text-muted-foreground md:text-2xl max-w-2xl mx-auto">
             I build modern web applications and scalable systems. Welcome to my portfolio.

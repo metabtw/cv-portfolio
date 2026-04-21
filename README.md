@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Portfolio & CV Builder
 
-## Getting Started
+A modern developer portfolio and CV builder built with Next.js 14 App Router, Tailwind CSS, Prisma, and Supabase.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Modern UI**: Built with Tailwind CSS, shadcn/ui, and Framer Motion.
+- **GitHub Sync**: Automatically fetches your GitHub repositories and keeps them updated.
+- **CV Builder**: Drag and drop your featured projects to build a custom PDF CV.
+- **PDF Generation**: Uses `@react-pdf/renderer` for robust, ATS-friendly PDF generation.
+- **Admin Panel**: Secure admin panel powered by NextAuth to manage your projects, custom descriptions, and skills.
+- **Database**: PostgreSQL database powered by Supabase, managed via Prisma ORM.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📋 Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js 18.x or later
+- A Supabase account (or any PostgreSQL database)
+- A GitHub account and Personal Access Token (for syncing repos)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Setup & Installation
 
-## Learn More
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Environment Variables:**
+   Copy the `.env.example` file to `.env` and fill in your values.
+   ```bash
+   cp .env.example .env
+   ```
+   *Make sure you generate a secure `NEXTAUTH_SECRET` (e.g., using `openssl rand -base64 32`).*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Database Setup:**
+   Run Prisma db push to sync your database schema:
+   ```bash
+   npx prisma db push
+   ```
+   *(Optional) You can also seed your database or generate the client if needed:*
+   ```bash
+   npx prisma generate
+   ```
 
-## Deploy on Vercel
+5. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔒 Security Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Never commit your `.env` file.** It is included in `.gitignore` by default.
+- The `/admin` routes are protected by NextAuth middleware. Only the user with credentials matching `ADMIN_EMAIL` and `ADMIN_PASSWORD` can log in.
+
+## 📚 Technologies Used
+
+- [Next.js 14](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Prisma](https://www.prisma.io/)
+- [Supabase](https://supabase.com/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [@react-pdf/renderer](https://react-pdf.org/)

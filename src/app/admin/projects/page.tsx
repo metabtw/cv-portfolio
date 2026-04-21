@@ -1,13 +1,11 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
-import { Loader2, ArrowLeft, Save } from 'lucide-react'
+import { Loader2, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
 type Project = {
@@ -49,7 +47,7 @@ export default function AdminProjects() {
       } else {
         alert('Failed to update project')
       }
-    } catch (e) {
+    } catch {
       alert('Error updating project')
     }
     setSaving(null)

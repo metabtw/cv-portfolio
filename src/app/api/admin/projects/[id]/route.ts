@@ -20,7 +20,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     })
 
     return NextResponse.json(updated)
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } catch {
+    return NextResponse.json({ error: 'Failed to update project' }, { status: 500 })
   }
 }

@@ -11,7 +11,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     const { id } = params
     await prisma.skill.delete({ where: { id } })
     return NextResponse.json({ success: true })
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } catch {
+    return NextResponse.json({ error: 'Failed to delete skill' }, { status: 500 })
   }
 }
